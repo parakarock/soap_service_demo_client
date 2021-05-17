@@ -13,7 +13,7 @@ import com.spring.nemo.soap_service_demo_client.client.SoapClient;
 @Configuration
 public class SoapConfig {
 //	@Value("${ENDPOINT_SERVICE_COURSE}")
-	private String endpoint = "http://localhost:8080/ws";
+	private String endpoint = "http://localhost:8082/ws";
 
 	@Bean
 	public Jaxb2Marshaller marshaller() {
@@ -33,7 +33,7 @@ public class SoapConfig {
 	public SoapClient courseClinet(Jaxb2Marshaller marshaller) {
 
 		SoapClient client = new SoapClient();
-		client.setDefaultUri("http://localhost:8080/ws");
+		client.setDefaultUri("http://localhost:8082/ws");
 		client.setMarshaller(marshaller);
 		client.setUnmarshaller(marshaller);
 		client.setInterceptors(new ClientInterceptor[] { securityInterceptor() });
