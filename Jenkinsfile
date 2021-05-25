@@ -100,6 +100,7 @@ pipeline {
             script {
                 sh "cd ~/Documents/kubernetes/jenkins-k8s"
                 sh "export TAG='${env.version_tag}'"
+                sh "echo $TAG"
                 sh "envsubst < soap_service_demo_client_deployment.yml"
                     try{
                     sh "kubectl apply -f ."
