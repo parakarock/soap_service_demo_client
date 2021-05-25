@@ -6,7 +6,6 @@ pipeline {
         credential = 'nemo_dockerhub'
         imageName = 'parakarock/soap_service_demo_client'
         version_tag = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
-        tag = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
     }
     stages {
       
@@ -17,7 +16,6 @@ pipeline {
                 // Run Maven on a Unix agent.
                 sh "mvn -Dmaven.test.failure.ignore=true clean package"
                 // sh "docker build -t soap_service_demo:latest -f Dockerfile ."
-                sh "echo ${env.tag}"
                 script {
                     docker.withRegistry('', "${env.credential}") {
                     image = docker.build("" + "" + "${env.imageName}" + ":"+"${env.version_tag}", "-f ./Dockerfile .")
@@ -107,7 +105,8 @@ pipeline {
                     sh "kubectl apply -f deployment.yml"
                     sh "kubectl apply -f soap_service_demo_client_service.yml"
                         }catch(error){
-                    sh "kubectl create -f ."
+                    sh "kubectl create -f deployment.yml"
+                    sh "kubectl create -f soap_service_demo_client_service.yml"
                 }        
             }
         }
