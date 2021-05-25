@@ -102,7 +102,7 @@ pipeline {
                 sh "ls -al"
                 sh "envsubst < soap_service_demo_client_deployment.yml > deployment.yml"
                 sh "ls -al"
-                sh "cat soap_service_demo_client_deployment.yml"
+                sh "cat deployment.yml"
                     try{
                     sh "kubectl apply -f deployment.yml"
                     sh "kubectl apply -f soap_service_demo_client_service.yml"
