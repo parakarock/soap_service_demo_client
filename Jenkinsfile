@@ -5,7 +5,7 @@ pipeline {
         // registry = 'hub.docker.com'
         credential = 'nemo_dockerhub'
         imageName = 'parakarock/soap_service_demo_client'
-        version_tag = getDockerTag()
+        version_tag = 'latest'
     }
     stages {
       
@@ -16,6 +16,7 @@ pipeline {
                 // Run Maven on a Unix agent.
                 sh "mvn -Dmaven.test.failure.ignore=true clean package"
                 // sh "docker build -t soap_service_demo:latest -f Dockerfile ."
+                sh "echo getDockerTag()"
                 script {
                     docker.withRegistry('', "${env.credential}") {
                     image = docker.build("" + "" + "${env.imageName}" + ":"+"${env.version_tag}", "-f ./Dockerfile .")
@@ -115,6 +116,6 @@ pipeline {
 
 def getDockerTag(){
     def tag  = sh script: 'git rev-parse HEAD', returnStdout: true
-    tag.substring(0,4)
+    tag.substring(0,4);
     return tag
 }
