@@ -64,13 +64,11 @@ pipeline {
         steps {
             git credentialsId: '402f609b-1df3-4acb-9836-d32f68d758df', url: 'https://github.com/parakarock/soap_service_demo_cypress.git'
             
-            // sh "npm install"
-            // sh "docker-compose up -d"
-            // sh "npm run test:demo"
-            // sh "docker-compose down"
-            sh "cat docker-compose_demo.yml"
+            sh "npm install"
             sh "envsubst < docker-compose_demo.yml > docker-compose.yml"
-            sh "cat docker-compose.yml"
+            sh "docker-compose up -d"
+            sh "npm run test:demo"
+            sh "docker-compose down"
 
         }
         
