@@ -5,8 +5,8 @@ pipeline {
         // registry = 'hub.docker.com'
         credential = 'nemo_dockerhub'
         imageName = 'parakarock/soap_service_demo_client'
-        version_tag = getDockerTag()
-        tag = getDockerTag()
+        version_tag = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
+        tag = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
     }
     stages {
       
@@ -117,6 +117,6 @@ pipeline {
 
 def getDockerTag(){
     def tag  = sh script: 'git rev-parse HEAD', returnStdout: true
-    sh script: 'tag.substring(0,4)'
+    tag.substring(0,4);
     return tag
 }
