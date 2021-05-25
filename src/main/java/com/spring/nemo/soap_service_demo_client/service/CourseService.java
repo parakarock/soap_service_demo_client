@@ -32,6 +32,7 @@ public class CourseService {
 	@GetMapping("/getAllCourse")
 	public ResponseData getAllCourseDetailsResponse() {
 		ResponseData response = new ResponseData(200, courseService.getAllCourse());
+		System.out.println("hello");
 		return response;
 	}
 
@@ -66,7 +67,6 @@ public class CourseService {
 					courseService.addNewCourse(item.getName(), item.getDescription()));
 			return response;
 		}
-		
 	}
 
 	@PostMapping("/updateCourse")
