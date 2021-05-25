@@ -16,4 +16,7 @@ spec:
       containers:
         - name: soap-service-demo-client
           image: parakarock/soap_service_demo_client:latest
+          env:
+            - name: ENDPOINT_SERVICE_COURSE
+              value: "http://10.96.0.1:8082/ws"
           imagePullPolicy: "Always"
