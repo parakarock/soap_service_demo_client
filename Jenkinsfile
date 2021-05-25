@@ -100,11 +100,12 @@ pipeline {
             script {
                 sh "cd ~/Documents/kubernetes/jenkins-k8s"
                 sh "ls -al"
-                sh "envsubst < soap_service_demo_client_deployment.yml > soap_service_demo_client_deployment.yml"
+                sh "envsubst < soap_service_demo_client_deployment.yml > deployment.yml"
                 sh "ls -al"
                 sh "cat soap_service_demo_client_deployment.yml"
                     try{
-                    sh "kubectl apply -f ."
+                    sh "kubectl apply -f deployment.yml"
+                    sh "kubectl apply -f soap_service_demo_client_service.yml"
                         }catch(error){
                     sh "kubectl create -f ."
                 }        
