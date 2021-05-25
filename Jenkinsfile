@@ -92,8 +92,8 @@ pipeline {
             label "mac"
         }
          steps {
-             sh "scp -i ~/Documents/virtualbox/jenkins/.vagrant/machines/default/virtualbox/private_key vagrant@192.168.56.101:/var/lib/jenkins/workspace/soap_service_dockerhub/soap_service_demo_deployment.yml ."
-             sh "scp -i ~/Documents/virtualbox/jenkins/.vagrant/machines/default/virtualbox/private_key vagrant@192.168.56.101:/var/lib/jenkins/workspace/soap_service_dockerhub/soap_service_demo_service.yml ."
+             sh "scp -i ~/Documents/virtualbox/jenkins/.vagrant/machines/default/virtualbox/private_key vagrant@192.168.56.101:/var/lib/jenkins/workspace/soap_service_dockerhub/soap_service_demo_client_deployment.yml ."
+             sh "scp -i ~/Documents/virtualbox/jenkins/.vagrant/machines/default/virtualbox/private_key vagrant@192.168.56.101:/var/lib/jenkins/workspace/soap_service_dockerhub/soap_service_demo_client_service.yml ."
             // git credentialsId: 'git_credential_soap_demo', url: 'https://github.com/parakarock/soap_service_demo'
             script {
                 sh "cd ~/Documents/kubernetes/jenkins-k8s"
