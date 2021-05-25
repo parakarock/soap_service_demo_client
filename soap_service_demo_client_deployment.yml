@@ -18,5 +18,5 @@ spec:
           image: parakarock/soap_service_demo_client:latest
           env:
             - name: ENDPOINT_SERVICE_COURSE
-              value: "http://10.96.0.1:8082/ws"
+              value: "http://10.109.112.111:8082/ws"
           imagePullPolicy: "Always"
