@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: soap-service-demo-client
+  namespace: jenkins
+spec:
+  selector:
+    matchLabels:
+      app: soap-service-demo-client
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: soap-service-demo-client
+    spec:
+      containers:
+        - name: soap-service-demo-client
+          image: parakarock/soap_service_demo_client:latest
+          imagePullPolicy: "Always"
