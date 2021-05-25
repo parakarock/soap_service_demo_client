@@ -99,7 +99,7 @@ pipeline {
             // git credentialsId: 'git_credential_soap_demo', url: 'https://github.com/parakarock/soap_service_demo'
             script {
                 sh "cd ~/Documents/kubernetes/jenkins-k8s"
-                sh "export TAG='${env.version_tag}' | envsubst < soap_service_demo_client_deployment.yml"
+                sh "envsubst < soap_service_demo_client_deployment.yml > soap_service_demo_client_deployment.yml"
                     try{
                     sh "kubectl apply -f ."
                         }catch(error){

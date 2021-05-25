@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: soap-service-demo-client
-          image: parakarock/soap_service_demo_client:${TAG}
+          image: parakarock/soap_service_demo_client:${version_tag}
           env:
             - name: ENDPOINT_SERVICE_COURSE
               value: "http://10.109.112.111:8082/ws"
